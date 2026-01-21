@@ -15,7 +15,7 @@ const NewTask = () => {
             <p className='text-sm text-white mt-2'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam iste praesentium mollitia minus explicabo id eum incidunt distinctio repellat quisquam!</p>
 
             <div className='mt-4 '>
-                <button className='border-2 bg-yellow-300 rounded-lg px-1 py-1'>Accept Task</button>
+                <button className='border-2 bg-blue-400 rounded-lg px-1 py-1'>Accept Task</button>
             </div>
 
         </div>

@@ -6,11 +6,13 @@ import AdminDashboard from './Components/Dashboard/AdminDashboard'
 import EmpDashboard from './Components/Dashboard/EmpDashboard'
 import { AuthContext } from './Context/AuthProvider'
 import { useContext } from 'react'
+import { setLocals } from '../utils/LocalStorage'
 
 
 
 function App() {
 
+  // localStorage.clear()
 
   const [user, setUser] = useState(null);
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -22,15 +24,18 @@ function App() {
   useEffect(() => {
 
     if (authData) {
-      const loggedInUser = localStorage.getItem("loggedInUser")
+      const loggedInUser = localStorage.getItem("loggedInUser");
 
       if (loggedInUser) {
-        setUser(loggedInUser.role)
+        const userData = JSON.parse(loggedInUser);
+        setUser(userData.role)
+        setLoggedInUser(userData.data)
+        setLocals
       }
 
     }
 
-  }, [authData])
+  }, [])
 
   const handleLogin = ((email, password) => {
 
@@ -48,7 +53,7 @@ function App() {
       if (employee) {
         setUser('employee')
         setLoggedInUser(employee)
-        localStorage.setItem('loggedInUser', JSON.stringify({ role: 'employee' }))
+        localStorage.setItem('loggedInUser', JSON.stringify({ role: 'employee', data: employee }))
       }
 
     }

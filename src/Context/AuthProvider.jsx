@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState, } from 'react'
-import { getLcocal, } from '../../utils/LocalStorage';
+import { getLcocal, setLocals } from '../../utils/LocalStorage';
 
 
 
@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
     const [userData, setUserData] = useState([]);
 
     useEffect(() => {
-        // setLocals()
+        setLocals()
         const { Admin, Employees } = getLcocal();
         setUserData({ Employees, Admin })
     }, [])
